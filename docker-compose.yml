@@ -3,7 +3,7 @@ version: "3"
 services:
 
   app:
-    build: ./app
+    image: ghcr.io/simonaC12/devops-demo:latest
 
     ports:
       - "8000:8000"
