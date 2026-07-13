@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-import time
 from prometheus_fastapi_instrumentator import Instrumentator
 from fastapi import HTTPException
 
