@@ -1,9 +1,6 @@
-from fastapi import FastAPI, HTTPException
-from prometheus_fastapi_instrumentator import Instrumentator
-import logging
+from fastapi import FastAPI
 import time
-
-logging.basicConfig(level=logging.INFO)
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
 
@@ -11,16 +8,21 @@ Instrumentator().instrument(app).expose(app)
 
 @app.get("/")
 def home():
-    logging.info("Home endpoint called")
-    return {"message": "Hello DevOps Summer School"}
+    return {"message": "Welcome to DevOps Demo"}
+
+@app.get("/products")
+def products():
+    return [
+        {"id": 1, "name": "Laptop"},
+        {"id": 2, "name": "Mouse"},
+        {"id": 3, "name": "Keyboard"},
+    ]
 
 @app.get("/slow")
 def slow():
-    logging.info("Slow endpoint called")
     time.sleep(2)
-    return {"message": "Slow endpoint"}
+    return {"message": "This endpoint is intentionally slow"}
 
 @app.get("/error")
 def error():
-    logging.error("Error endpoint called")
-    raise HTTPException(status_code=500, detail="Something went wrong")
+    raise Exception("Something went wrong")
