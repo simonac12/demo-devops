@@ -1,4 +1,5 @@
-name: DevOps Pipeline
+
+name: DevOpss Pipeline
 
 on:
   push:
