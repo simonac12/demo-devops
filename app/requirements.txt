@@ -3,3 +3,4 @@ uvicorn
 prometheus-fastapi-instrumentator
 pytest
 httpx
+ruff
